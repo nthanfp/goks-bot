@@ -1,0 +1,32 @@
+{
+    "userAuthDto": {
+        "userId": 2366,
+        "userName": "ntnferry1505@gmail.com",
+        "accessTypes": [
+            "GUEST",
+            "USER"
+        ],
+        "sessionId": "9BEBCB028E52DAEFF1717D8AF1203A02"
+    },
+    "userStudentResponseDTO": {
+        "id": 2366,
+        "createdAt": "2023-09-05T15:04:50",
+        "updatedAt": "2023-09-05T16:33:54",
+        "email": "ntnferry1505@gmail.com",
+        "school": {
+            "id": 315,
+            "createdAt": "2023-09-05T15:04:50",
+            "updatedAt": "2023-09-05T15:04:50",
+            "name": "STMIK LIKMI",
+            "emailPrefix": null
+        },
+        "fullName": "Nathanael Ferry Pratama",
+        "verifiedBy": "ID_CARD",
+        "status": "APPROVED",
+        "gender": "MALE",
+        "phone": "085646877046",
+        "idCardUrl": null,
+        "userType": "STUDENT",
+        "schoolEmail": null
+    }
+}
