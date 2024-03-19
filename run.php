@@ -1,10 +1,22 @@
 <?php
+date_default_timezone_set('Asia/Jakarta');
+
 require 'vendor/autoload.php';
 
 use Nathan\GoksBot\GOKSModel;
 
 $model = new GOKSModel(true);
-$login = $model->loginUser('ntnferry1505@gmail.com', 'Hahalol123!');
+
+echo "[?][" . date('d-M-Y H:i:s') . "] Enter your email: ";
+$email = trim(fgets(STDIN));
+
+echo "[?][" . date('d-M-Y H:i:s') . "] Enter your password: ";
+$password = trim(fgets(STDIN));
+
+echo "[?][" . date('d-M-Y H:i:s') . "] Refresh time (minutes): ";
+$refresh = trim(fgets(STDIN));
+
+$login = $model->loginUser($email, $password);
 
 if (isset($login['success'])) {
     $user = $model->getUsername();
@@ -22,7 +34,7 @@ if (isset($login['success'])) {
         if ($currentMinute % 5 === 0) {
             // Jalankan blok kode di sini
             echo "[~][" . date('d-M-Y H:i:s') . "][{$user}] Get product by brand...\n";
-            $result = $model->getBrandProduct(40);
+            $result = $model->getBrandProduct(32);
             if (!empty($result['pageData'])) {
                 foreach ($result['pageData'] as $item) {
                     $description = json_decode($item['description'], true);
@@ -45,10 +57,10 @@ if (isset($login['success'])) {
             }
 
             // Tunggu selama lima menit sebelum menjalankan kembali loop
-            sleep(300); // 300 detik = 5 menit
+            sleep(60 * $refresh); // 300 detik = 5 menit
         } else {
             // Tunggu satu menit sebelum memeriksa kembali
-            sleep(60); // 60 detik = 1 menit
+            sleep(5); // 60 detik = 1 menit
         }
     }
 } else {
