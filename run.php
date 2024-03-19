@@ -31,7 +31,7 @@ if (isset($login['success'])) {
         $currentMinute = date('i', $currentTime);
 
         // Periksa apakah menit saat ini bisa dibagi dengan 5 (atau 0)
-        if ($currentMinute % 5 === 0) {
+        if ($currentMinute % $refresh === 0) {
             // Jalankan blok kode di sini
             echo "[~][" . date('d-M-Y H:i:s') . "][{$user}] Get product by brand...\n";
             $result = $model->getBrandProduct(32);
