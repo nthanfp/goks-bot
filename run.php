@@ -13,7 +13,7 @@ $email = trim(fgets(STDIN));
 echo "[?][" . date('d-M-Y H:i:s') . "] Enter your password: ";
 $password = trim(fgets(STDIN));
 
-echo "[?][" . date('d-M-Y H:i:s') . "] Refresh time (minutes): ";
+echo "[?][" . date('d-M-Y H:i:s') . "] Refresh time (seconds): ";
 $refresh = trim(fgets(STDIN));
 
 $login = $model->loginUser($email, $password);
@@ -27,11 +27,12 @@ if (isset($login['success'])) {
         // Ambil waktu saat ini
         $currentTime = time();
 
-        // Ambil menit dari waktu saat ini
+        // Ambils dari waktu saat ini
         $currentMinute = date('i', $currentTime);
+        $currentSecond = date('s', $currentTime);
 
         // Periksa apakah menit saat ini bisa dibagi dengan 5 (atau 0)
-        if ($currentMinute % $refresh === 0) {
+        if ($currentSecond % $refresh === 0) {
             // Jalankan blok kode di sini
             echo "[~][" . date('d-M-Y H:i:s') . "][{$user}] Get product by brand...\n";
             $result = $model->getBrandProduct(32);
@@ -57,10 +58,10 @@ if (isset($login['success'])) {
             }
 
             // Tunggu selama lima menit sebelum menjalankan kembali loop
-            sleep((60 * $refresh) - 2); // 300 detik = 5 menit
+            sleep(5); // 300 detik = 5 menit
         } else {
             // Tunggu satu menit sebelum memeriksa kembali
-            sleep(5); // 60 detik = 1 menit
+            sleep(1); // 60 detik = 1 menit
         }
     }
 } else {
