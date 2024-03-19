@@ -57,7 +57,7 @@ if (isset($login['success'])) {
             }
 
             // Tunggu selama lima menit sebelum menjalankan kembali loop
-            sleep(60 * $refresh); // 300 detik = 5 menit
+            sleep((60 * $refresh) - 2); // 300 detik = 5 menit
         } else {
             // Tunggu satu menit sebelum memeriksa kembali
             sleep(5); // 60 detik = 1 menit
