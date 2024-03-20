@@ -1,30 +1,30 @@
 {
     "userAuthDto": {
-        "userId": 2366,
-        "userName": "ntnferry1505@gmail.com",
+        "userId": 55780,
+        "userName": "salimwijayaamonicaa@gmail.com",
         "accessTypes": [
             "GUEST",
             "USER"
         ],
-        "sessionId": "9BCF73009D659734E4F6146DB02940A7"
+        "sessionId": "00697963A9C1034AE2048D94B506E5FA"
     },
     "userStudentResponseDTO": {
-        "id": 2366,
-        "createdAt": "2023-09-05T15:04:50",
-        "updatedAt": "2023-09-05T16:33:54",
-        "email": "ntnferry1505@gmail.com",
+        "id": 55780,
+        "createdAt": "2024-03-19T16:45:16",
+        "updatedAt": "2024-03-20T09:14:46",
+        "email": "salimwijayaamonicaa@gmail.com",
         "school": {
-            "id": 315,
-            "createdAt": "2023-09-05T15:04:50",
-            "updatedAt": "2023-09-05T15:04:50",
-            "name": "STMIK LIKMI",
-            "emailPrefix": null
+            "id": 505,
+            "createdAt": "2023-09-11T11:32:42",
+            "updatedAt": "2023-09-11T11:32:42",
+            "name": " STMIK LIKMI",
+            "emailPrefix": "likmi.ac.id"
         },
-        "fullName": "Nathanael Ferry Pratama",
+        "fullName": "Monica Salimwijaya",
         "verifiedBy": "ID_CARD",
         "status": "APPROVED",
-        "gender": "MALE",
-        "phone": "085646877046",
+        "gender": "FEMALE",
+        "phone": "081915196335",
         "idCardUrl": null,
         "userType": "STUDENT",
         "schoolEmail": null

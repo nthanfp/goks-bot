@@ -16,24 +16,23 @@ $password = trim(fgets(STDIN));
 echo "[?][" . date('d-M-Y H:i:s') . "] Refresh time (seconds): ";
 $refresh = trim(fgets(STDIN));
 
+echo "[?][" . date('d-M-Y H:i:s') . "] Telegram Chat ID: ";
+$telegramId = trim(fgets(STDIN));
+
 $login = $model->loginUser($email, $password);
 
 if (isset($login['success'])) {
     $user = $model->getUsername();
-    $model->sendTelegramMessage('358563145', "Date: " . date('d-M-Y H:i:s') . "\nUser : {$user}\nLogin success...");
+    $model->sendTelegramMessage($telegramId, "Date: " . date('d M Y H:i:s') . "\nUser : {$user}\n\nLogin success...");
     echo "[~][" . date('d-M-Y H:i:s') . "][{$user}] Login success...\n";
 
     while (true) {
         // Ambil waktu saat ini
         $currentTime = time();
-
-        // Ambils dari waktu saat ini
         $currentMinute = date('i', $currentTime);
         $currentSecond = date('s', $currentTime);
 
-        // Periksa apakah menit saat ini bisa dibagi dengan 5 (atau 0)
         if ($currentSecond % $refresh === 0) {
-            // Jalankan blok kode di sini
             echo "[~][" . date('d-M-Y H:i:s') . "][{$user}] Get product by brand...\n";
             $result = $model->getBrandProduct(32);
             if (!empty($result['pageData'])) {
@@ -45,10 +44,10 @@ if (isset($login['success'])) {
                     $redeem = $model->redeemProduct($out_id);
                     if ($redeem['id']) {
                         $status = "Redeemed";
-                        $model->sendTelegramMessage('358563145', "Date: " . date('d-M-Y H:i:s') . "\nUser : {$user}\nRedeem success...");
+                        $model->sendTelegramMessage($telegramId, "Date: " . date('d M Y H:i:s') . "\n\nUser : {$user}\nRedeem success...");
                     } else {
                         $status = "Redeem Error";
-                        $model->sendTelegramMessage('358563145', "Date: " . date('d-M-Y H:i:s') . "\nUser : {$user}\nRedeem error...");
+                        $model->sendTelegramMessage($telegramId, "Date: " . date('d M Y H:i:s') . "\n\nUser : {$user}\nRedeem error...");
                     }
                     echo "[~][" . date('d-M-Y H:i:s') . "][{$user}] {$out_id} - {$out_name} - $status\n";
                 }
@@ -57,11 +56,9 @@ if (isset($login['success'])) {
                 echo "[!][" . date('d-M-Y H:i:s') . "][{$user}] No data available.\n";
             }
 
-            // Tunggu selama lima menit sebelum menjalankan kembali loop
-            sleep(5); // 300 detik = 5 menit
+            sleep(5);
         } else {
-            // Tunggu satu menit sebelum memeriksa kembali
-            sleep(1); // 60 detik = 1 menit
+            sleep(1);
         }
     }
 } else {
